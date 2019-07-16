@@ -1,0 +1,30 @@
+class {{entity.name|capitalize}}{
+
+  {{entity.name|capitalize}}(this){
+  {% for property in entity.properties %}
+    {% if property is entity %}
+      {{property.name}} = {{property.type.name|capitalize}}();
+    {% endif %}
+  {% endfor %}
+  }
+  {{entity.name|capitalize}}((this{% for property in entity.properties %}{% if property is not entity %},{{property.name}}{% endif %}{% endfor %}):
+  {% for property in entity.properties %}
+    {% if property is entity %}
+      {{property.name}} = {{property.type.name|capitalize}}();
+    {% else %}
+      this.{{property.name}}={{property.name}}
+      {% endif %}
+  {% endfor %}
+
+  {% for property in entity.properties %}
+  void get{{property.name|capitalize}}(){
+    return this.{{property.name}}
+	}
+  {% endfor %}
+  {% for property in entity.properties %}
+  String set{{property.name|capitalize}}(this,{{property.name}}){
+    this.{{property.name}} = {{property.name}}
+  }
+
+  {% endfor %}
+};

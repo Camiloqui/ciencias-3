@@ -1,0 +1,47 @@
+entity Prestamo {
+  codigo : integer      // Codigo unico del prestamo
+  fechaIn : string      // Fecha de registro del prestamo
+  fechaFin : string     // Fecha de finalizacion del prestamo
+  fechaOut : string     // Fecha de devolución del recurso
+  observacion : string  // Observaciones opcionales del prestamo
+  recurso : Recurso     // Recurso que se va a prestar
+  cuenta : Cuenta       // Cuenta a la que se le hace el prestamo
+  estado : Estado       // Estado del prestamo
+}
+
+entity Recurso {
+  codigo : integer      // Codigo unico del recurso
+  nombre : string       // Nombre del recurso
+  descripcion : string  // Descripcion opcional del recurso
+  estado : Estado       // Estado del recurso
+  categoria : Categoria // Categoria del Recurso
+  historial : Historial // Historial de prestamo del recurso
+}
+
+entity Cuenta {
+  codigo : integer      // Codigo unico de la cuenta
+  nombre : string       // Nombre del titular
+  apellido : string     // Apellido del titular
+  mail : string         // E-mail del titular
+  telefono : string     // Numero de telefono del titular
+  estado : Estado       // Estado de la cuenta
+  historial : Historial // Historial de prestamo del titular
+}
+
+entity Estado {
+  codigo : string       // Codigo unico de el estado
+  nombre : string       // Nombre del estado
+  descripcion : string  // Descripcion opcional del estado
+}
+
+entity Categoria {
+  codigo : string       // Codigo unico de la categoria
+  nombre : string       // Nombre de la categoria
+  tiempo : integer      // Maximo numero de dias hábiles del prestamo para la categoria
+  descripcion : string  // Descripcion de la categoria
+}
+
+entity Historial {
+  codigo : integer      // Codigo unico de historial
+  historial : list      // Lista prestamos
+}
