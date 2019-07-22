@@ -28,9 +28,9 @@ def get_entity_mm(debug=False):
     """
    Construye y devuelve un metamodelo para el lenguaje de la entidad.
     """
-    # Built-in simple types
-    # Each model will have this simple types during reference resolving but
-    # these will not be a part of `types` list of EntityModel.
+    # Tipos simples incorporados
+    # Cada modelo tendrá estos tipos simples durante la resolución de referencia, pero
+    # estos no formarán parte de la lista de `tipos` de EntityModel.
     type_builtins = {
             'integer': SimpleType(None, 'integer'),
             'string': SimpleType(None, 'string'),
@@ -48,16 +48,16 @@ def main(debug=False):
 
     entity_mm = get_entity_mm(debug)
 
-    # Export to .dot file for visualization
+    # Exportar a archivo .dot para visualización
     dot_folder = join(this_folder, 'dotexport')
     if not os.path.exists(dot_folder):
         os.mkdir(dot_folder)
     metamodel_export(entity_mm, join(dot_folder, 'entity_meta.dot'))
 
-    # Build Person model from person.ent file
+    # Construir modelo de persona a partir del archivo person.ent
     person_model = entity_mm.model_from_file(join(this_folder, 'biblioteca.ent'))
 
-    # Export to .dot file for visualization
+    # Exportar a archivo .dot para visualización
     model_export(person_model, join(dot_folder, 'biblioteca.dot'))
 
 
